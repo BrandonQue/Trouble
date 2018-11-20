@@ -249,7 +249,7 @@ public class TroubleGUI extends JFrame{
 		}
 		
 		public int diceRoll() {
-			int n = (int)(Math.random()*3) + 4;
+			int n = (int)(Math.random()*6) + 1;
 			return n;
 		}
 	
@@ -289,7 +289,7 @@ public class TroubleGUI extends JFrame{
 					}
 				}
 				for(int i = 0; i < spaces[ind].length; i++) {
-					if(i+6 < spaces[ind].length && cBoard[spaces[ind][i][0]][spaces[ind][i][1]] == currPlayer.getInitial() && cBoard[spaces[ind][i+6][0]][spaces[ind][i+6][1]] != currPlayer.getInitial()) {	//If six spaces in front of piece is not after the last space or another piece of the same player enable piece.
+					if(i + 6 < spaces[ind].length && cBoard[spaces[ind][i][0]][spaces[ind][i][1]] == currPlayer.getInitial() && cBoard[spaces[ind][i+6][0]][spaces[ind][i+6][1]] != currPlayer.getInitial()) {	//If six spaces in front of piece is not after the last space or another piece of the same player enable piece.
 						board[spaces[ind][i][0]][spaces[ind][i][1]].setEnabled(true);
 					}
 				}
@@ -301,7 +301,9 @@ public class TroubleGUI extends JFrame{
 				}
 			}
 			if(!checkEnabled()) {
-				takeTurn();
+				if(dice != 6) {
+					takeTurn();
+				}
 				board[4][4].setEnabled(true);
 			}
 		}
